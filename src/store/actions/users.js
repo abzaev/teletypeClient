@@ -4,7 +4,7 @@ export function fetchUsers() {
 
   return async dispatch => {
     try{
-      const response = await axios.get('http://localhost:5000/users', {
+      const response = await axios.get('https://obscure-atoll-08604.herokuapp.com/users', {
         headers:
           {
             "Access-Control-Allow-Origin": "*",

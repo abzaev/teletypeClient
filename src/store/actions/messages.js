@@ -3,7 +3,7 @@ import axios from 'axios';
 export function fetchMessages(index) {
   return async dispatch => {
     try{
-      const response = await axios.get(`http://localhost:5000/messages/${index}`, {
+      const response = await axios.get(`https://obscure-atoll-08604.herokuapp.com/messages/${index}`, {
         headers:
           {
             "Access-Control-Allow-Origin": "*",
