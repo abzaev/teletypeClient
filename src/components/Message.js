@@ -3,7 +3,7 @@ import { StyleSheet, View, Text } from 'react-native';
 
 const Message = props => {
   return (
-    <View style={styles.container}>
+    <View>
       {
         props.owner
         ?

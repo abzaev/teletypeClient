@@ -9,22 +9,16 @@ export const Users = ({ user, setWindow }) => {
         onPress={() => setWindow()}
       >
         <View style={styles.container}>
-          <View style={styles.user}>
+          <View>
             <Text>{`${user.name.first} ${user.name.last}`}</Text>
           </View>
-          <View style={styles.user}>
+          <View>
             <Text>{user.lastMessage.text}</Text>
           </View>
-          <View style={styles.user}>
+          <View>
             <Text>{user.messenger}</Text>
           </View>
         </View>
-        {/* <View style={styles.message}>
-        
-        </View>
-        <View style={styles.messenger}>
-          <Text>{user.messenger}</Text>
-        </View> */}
       </TouchableOpacity>
     </View>
   )
@@ -37,8 +31,5 @@ const styles = StyleSheet.create({
     borderColor: '#eee',
     borderRadius: 5,
     marginBottom: 10,
-  },
-  user: {
-    flexDirection: 'row',
   },
 })

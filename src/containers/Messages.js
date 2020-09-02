@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, View, Text, Button } from 'react-native';
+import { StyleSheet, View, Text, Button, FlatList } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchMessages, sendMessage } from '../store/actions/messages';
 import Message from '../components/Message';
@@ -21,15 +21,25 @@ export default props => {
       </View>
     )
   }
+
   return (
-    <View style={styles.container}>
-      <NavBar title="Диалоги">
-        <Button onPress={props.setMessagesWindow} title={'Назад'} />
-      </NavBar>
-      {
-        messages.messages.map((item) => <Message owner={item.messageOwner} key={item.id} message={item.text} />)
-      }
-      
+    <View style={styles.wrapper}>
+      <View style={styles.content}>
+        <NavBar title="Диалоги">
+          <Button onPress={props.setMessagesWindow} title={'Назад'} />
+        </NavBar>
+        <FlatList
+          data={messages.messages}
+          renderItem={({item}) => (
+              <Message
+                owner={item.messageOwner}
+                key={item.id}
+                message={item.text}
+              />
+          )}
+          keyExtractor={item => item._id}
+        />
+      </View>
       <View style={styles.sendMessage}>
         <AddMessage onSubmit={(text) => dispatch(sendMessage(text))} />
       </View>
@@ -38,13 +48,19 @@ export default props => {
 }
 
 const styles = StyleSheet.create({
+  wrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100%',
+  },
+  content: {
+    flexGrow: 1,
+    flexShrink: 0,
+    flexBasis: 'auto',
+  },
   sendMessage: {
-    position: 'fixed',
-    left: 0,
-    bottom: 0,
-    width: '100%',
     backgroundColor: 'white',
-    color: 'white',
-    textAlign: 'center',
+    flexShrink: 0,
+    flexBasis: 'auto',
   }
 });

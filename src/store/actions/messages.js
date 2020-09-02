@@ -28,7 +28,6 @@ export function fetchMessagesAction(messages) {
 export function sendMessage(text) {
   return (dispatch, getState) => {
     let messagesFromState = getState().messages.messages;
-    console.log(messagesFromState)
     const newMessage = {
       id: messagesFromState.messages.length,
       text,

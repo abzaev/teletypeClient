@@ -19,7 +19,7 @@ const ChatList = props => {
                 }}
                 user={item} />
           )}
-          keyExtractor={item => item.id}
+          keyExtractor={item => item._id}
         />
       </View>
     </View>
